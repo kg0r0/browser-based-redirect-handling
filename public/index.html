@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <form>
+    <input type="button" value="xhr test" onClick="xhrTest()">
+    <input type="button" value="fetch test" onClick="fetchTest()">
+  </form>
+  <script>
+    function xhrTest() {
+      let request = new XMLHttpRequest();
+      request.open("GET", "/xhr");
+      request.send();
+    }
+
+    function fetchTest() {
+      fetch("/fetch", {
+        redirect: "manual" // follow, error
+      })
+      .then(response => {
+       if (response.type === "opaqueredirect") {
+        location.href = "https://accounts.google.com/o/oauth2/v2/auth'"
+       }
+      });
+    }
+  </script>
+</body>
+</html>
